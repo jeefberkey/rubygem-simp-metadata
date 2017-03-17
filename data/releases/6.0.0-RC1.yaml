@@ -1,6 +1,6 @@
 ---
 releases:
-  6.0.0-Beta:
+  6.0.0-RC1:
     simp-doc:
       ref: 250e75c0b3d31f094ec3165c03dabf6c23487cac
       type: https

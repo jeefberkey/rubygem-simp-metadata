@@ -9,10 +9,24 @@ module Simp
           Dir.glob("**/*.yaml") do |filename|
             begin
               hash = YAML.load_file(@path + "/" + filename)
-              @data = @data.merge(hash)
+              @data = self.deep_merge(@data, hash)
             end
           end
         end
+      end
+      def deep_merge(target_hash, source_hash)
+        source_hash.each do |key, value|
+          if (target_hash.key?(key))
+            if (value.class == Hash)
+              self.deep_merge(target_hash[key], value)
+            else
+              target_hash[key] = value
+            end
+          else
+            target_hash[key] = value
+          end
+        end
+        target_hash
       end
       def url(component)
           record = @data['components'][component]
