@@ -30,7 +30,7 @@ module Simp
         retval = nil
         if @data["releases"].key?(version)
           if @data["releases"][version].key?(component)
-            retval = @data["releases"][version][component]
+            retval = @data["releases"][version][component].merge({ "source" => @data["components"][component]})
           end
         end
         return retval

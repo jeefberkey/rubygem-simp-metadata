@@ -79,6 +79,8 @@ when "generate"
       file << ""
       value.each do |modulename, modinfo|
          file << "mod '#{modulename}',"
+         url = metadata.url(modulename)
+         file << "    :git => '#{url}'"
          file << "    :ref => '#{modinfo["ref"]}'"
          file << ""
       end
