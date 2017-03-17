@@ -26,6 +26,23 @@ module Simp
         end
         list
       end
+      def list_components_with_data(version = nil)
+        if (version == nil)
+          raise "Must specify version"
+        end
+        list = self.component_list(version)
+        retval = {}
+        list.each do |component|
+          info = self.component_info(component, version)
+          if (info != nil)
+            unless (retval.key?(info["path"]))
+              retval[info["path"]] = {}
+            end
+            retval[info["path"]][component] = info
+          end
+        end
+        return retval
+      end
       def component_info(component, version = nil)
         retval = nil
         if @data["releases"].key?(version)

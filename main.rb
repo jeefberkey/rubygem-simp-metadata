@@ -61,17 +61,7 @@ when "generate"
     exit 1
   end
   if options.puppetfile == true
-    paths = {}
-    components = metadata.component_list(options.release)
-    components.each do |key|
-      info = metadata.component_info(key, options.release)
-      if (info != nil)
-        unless (paths.key?(info["path"]))
-          paths[info["path"]] = {}
-        end
-        paths[info["path"]][key] = info
-      end
-    end
+    paths = metadata.list_components_with_data(options.release)
     file = []
     paths.each do | key, value|
       path = key.slice(1, key.length)
