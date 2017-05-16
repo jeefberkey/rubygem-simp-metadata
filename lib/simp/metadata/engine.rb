@@ -9,7 +9,7 @@ module Simp
         end
         @data = {}
         Dir.chdir(@path) do
-          unless (Dir.exists(@path + "/data"))
+          unless (Dir.exists?(@path + "/data"))
           	`git clone https://github.com/simp/simp-metadata data`	
           end
           Dir.chdir("data") do
