@@ -15,9 +15,9 @@ module Simp
           Dir.chdir("data") do
             Dir.glob("**/*.yaml") do |filename|
               begin
-                hash = YAML.load_file(@path + "/" + filename)
+                hash = YAML.load_file("/" + filename)
                 @data = self.deep_merge(@data, hash)
-              end
+              end`
             end
           end
         end
