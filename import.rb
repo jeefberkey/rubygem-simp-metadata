@@ -4,10 +4,9 @@ require 'yaml'
 require 'pry'
 require 'pry-byebug'
 $UPSTREAMREPO="https://github.com/simp/simp-core.git"
+$DATAREPO="git@github.com:simp/simp-metadata.git"
 begin
   Dir.mkdir("scratch")
-  Dir.mkdir("data")
-  Dir.mkdir("data/releases")
 rescue
 end
 Dir.chdir("scratch") do
@@ -17,6 +16,18 @@ Dir.chdir("scratch") do
     Dir.chdir("upstream") do
       `git fetch origin`
     end
+  end
+  unless Dir.exists?("data")
+    `git clone #{$DATAREPO} data`
+  else
+    Dir.chdir("data") do
+      `git fetch origin`
+    end
+  end
+  begin
+    Dir.mkdir("data")
+    Dir.mkdir("data/releases")
+  rescue
   end
 end
 data = {}
@@ -115,9 +126,14 @@ Dir.chdir("scratch/upstream") do
   end
 end
 comp = { "components" => components }
-File.open("data/components.yaml", 'w') {|f| f.write comp.to_yaml }
+File.open("scratch/data/v1/components.yaml", 'w') {|f| f.write comp.to_yaml }
 
 data['releases'].each do |key, value|
   release = { "releases" => { key => value } }
-  File.open("data/releases/#{key}.yaml", 'w') {|f| f.write release.to_yaml }
+  File.open("scratch/data/v1/releases/#{key}.yaml", 'w') {|f| f.write release.to_yaml }
+end
+Dir.chdir("scratch/data") do
+  `git add -A`
+  `git commit`
+  `git push origin`
 end
