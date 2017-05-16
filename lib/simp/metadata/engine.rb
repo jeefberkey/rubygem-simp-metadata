@@ -9,9 +9,8 @@ module Simp
         end
         @data = {}
         Dir.chdir(@path) do
-          if (Dir.exists(@path + "/data"))
-
-          else
+          unless (Dir.exists(@path + "/data"))
+          	`git clone https://github.com/simp/simp-metadata data`	
           end
           Dir.chdir("data") do
             Dir.glob("**/*.yaml") do |filename|
