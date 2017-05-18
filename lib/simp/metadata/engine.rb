@@ -17,7 +17,7 @@ module Simp
               begin
                 hash = YAML.load_file("/" + filename)
                 @data = self.deep_merge(@data, hash)
-              end`
+              end
             end
           end
         end
