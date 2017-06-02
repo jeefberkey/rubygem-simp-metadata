@@ -7,7 +7,8 @@ require 'pry'
 require 'json'
 
 command, *args = ARGV;
-metadata = Simp::Metadata::Engine.new("data")
+metadata = Simp::Metadata::Engine.new("scratch/data")
+
 def rest_request(request, method = "GET", body = nil)
   require 'net/http'
   require 'uri'
