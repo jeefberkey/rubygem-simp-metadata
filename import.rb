@@ -60,17 +60,17 @@ def parse_git(url)
   when /^https:/
     https_url = url.split("/")
     host = https_url[2]
-    path = https_url.drop(3).join("/")
+    path = https_url.drop(3).join("/").gsub(".git","")
     type = "https"
   when /^git@/
     git_url = url.split(":")
     host = git_url[0].gsub("git@","")
-    path = git_url[1]
+    path = git_url[1].gsub(".git", "")
     type = "ssh"
   when /^git:/
     git_url = url.split("/")
     host = git_url[2]
-    path = git_url.drop(3).join("/")
+    path = git_url.drop(3).join("/").gsub(".git","")
     type = "ssh"
   end
   return { "host" => host, "path" => path, "type" => type }

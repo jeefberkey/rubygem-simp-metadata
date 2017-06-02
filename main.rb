@@ -35,9 +35,6 @@ def rest_request(request, method = "GET", body = nil)
   JSON.parse(response.body)
 end
 
-config = YAML.load_file("config.yaml")
-gitlabtoken = config["gitlab"]["token"]
-result = rest_request("https://gitlab.com/api/v3/runners?private_token=#{gitlabtoken}")
 
 case command
 when "generate"
