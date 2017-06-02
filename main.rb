@@ -99,6 +99,7 @@ when "mirror"
     components = metadata.component_list()
     components.each do |component|
       url = metadata.url(component)
+      puts component
       `git clone #{url} #{component}`
     end
   end
