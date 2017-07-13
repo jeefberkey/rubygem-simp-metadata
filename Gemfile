@@ -1,3 +1,4 @@
-source 'https://rubygems.org'
-gem 'pry'
-gem 'pry-byebug'
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in simp-metadata.gemspec
+gemspec

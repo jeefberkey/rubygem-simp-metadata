@@ -1,7 +1,11 @@
 # vim: set expandtab ts=2 sw=2:
+
+require "simp/metadata/version"
+
 module Simp
   module Metadata
     class Engine
+
       def initialize(path)
         @path = File.absolute_path(path);
         @data = {}
@@ -14,6 +18,7 @@ module Simp
           end
         end
       end
+
       def deep_merge(target_hash, source_hash)
         source_hash.each do |key, value|
           if (target_hash.key?(key))
@@ -28,11 +33,13 @@ module Simp
         end
         target_hash
       end
+      
       def url(component)
-          record = @data['components'][component]
-          primary = record["primary_source"]
-          url = "https://#{primary["host"]}/#{primary["path"]}"
+        record = @data['components'][component]
+        primary = record["primary_source"]
+        "https://#{primary["host"]}/#{primary["path"]}"
       end
+
       def component_list(version = nil)
         list = []
         @data['components'].each do |key, value|
@@ -40,6 +47,7 @@ module Simp
         end
         list
       end
+
       def list_components_with_data(version = nil)
         if (version == nil)
           raise "Must specify version"
@@ -57,6 +65,7 @@ module Simp
         end
         return retval
       end
+
       def component_info(component, version = nil)
         retval = nil
         if @data["releases"].key?(version)
