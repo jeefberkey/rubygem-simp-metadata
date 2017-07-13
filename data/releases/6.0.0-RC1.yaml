@@ -2,15 +2,15 @@
 releases:
   6.0.0-RC1:
     simp-doc:
-      ref: 250e75c0b3d31f094ec3165c03dabf6c23487cac
+      ref: 5019d8716aeecf2631463d8bc5b3c4bde31249c6
       type: https
       path: "/src"
     simp-rsync:
-      ref: 510bb662128e896a78dafd7ed7ac739025118457
+      ref: 6dd183da525da01f2fcbad8e697607bf616796f1
       type: https
       path: "/src/puppet/modules"
     rubygem-simp_cli:
-      ref: 4ad5b2f176aa80ea931a8f49723361e3af6e465c
+      ref: 947a29af514417c4b976ebae56deb73b4c7cc64c
       type: https
       path: "/src/rubygems"
     bfraser-grafana:
@@ -86,7 +86,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     onyxpoint-gpasswd:
-      ref: f235c7b032a6abca5b73687221a8fdf8f151691a
+      ref: 04431f902da8b20527e1cb5eb98ec6f4fefd6429
       type: https
       path: "/src/puppet/modules"
     puppetlabs-apache:
@@ -146,11 +146,11 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-at:
-      ref: 4deddd8c4e3c5fb1320b017e6ab52828234d58be
+      ref: 35bf42043b4b664a61b6b6b6d851ea1ee3b14160
       type: https
       path: "/src/puppet/modules"
     simp-auditd:
-      ref: fc667847581bf5bcb24f13b6cb7ae1121450191c
+      ref: c64a9d841ca9083b9a8a4b179ce179822a560e02
       type: https
       path: "/src/puppet/modules"
     simp-autofs:
@@ -166,7 +166,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-compliance_markup:
-      ref: 16c660d5b56be37cbe44ecbfac87bfc61ed40bfd
+      ref: cadc444b001ef06f423dca141229cc91d043e932
       type: https
       path: "/src/puppet/modules"
     simp-cron:
@@ -178,7 +178,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-dirtycow:
-      ref: af1fbbb1d4cfccd5fe99961ed77f16ff76db01d8
+      ref: e6191625e791d711f72eaf9ed4fb8e54c80a5968
       type: https
       path: "/src/puppet/modules"
     simp-fips:
@@ -190,11 +190,11 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-gdm:
-      ref: 5d1c85bbf0d07c8402c18e627a4a73fc9fd1f84a
+      ref: b50ca2bb9a3482620379b747736e9ba0b3bf3084
       type: https
       path: "/src/puppet/modules"
     simp-gnome:
-      ref: f3a95330b79b67913a48b1a2cfe85d5582b6ed66
+      ref: 7465fe7485702b6b07343a287f3d0c26b1f1af99
       type: https
       path: "/src/puppet/modules"
     simp-haveged:
@@ -211,14 +211,14 @@ releases:
       path: "/src/puppet/modules"
     simp-issue:
       ref: 31fd9b22d3085d1c34d4d208d73b23a8094fc4ab
-      type: 
+      type: https
       path: "/src/puppet/modules"
     simp-jenkins:
       ref: b3b024b8246c8c4445c8b97404c994f7aada6384
       type: https
       path: "/src/puppet/modules"
     simp-journald:
-      ref: 26e4c303fd7bd6c61db469cbc63616e82a6f425b
+      ref: 0a6df1389b58ac787f3339a7f6ac3d1cdf56b9b9
       type: https
       path: "/src/puppet/modules"
     simp-krb5:
@@ -254,11 +254,11 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-network:
-      ref: 0b7a1909223f6d03dc4093d13d2d9fee2d712fca
+      ref: 328c9780c946524ff7e6fe4396c5df4e2cea66b5
       type: https
       path: "/src/puppet/modules"
     simp-nfs:
-      ref: 975f88b67816d547253a51c75cce136fe1a661b7
+      ref: 4a60137434cf025631724f349dce1cca205dc1aa
       type: https
       path: "/src/puppet/modules"
     simp-ntpd:
@@ -270,15 +270,15 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-simp_openldap:
-      ref: 085a7e373d6c44a39dd2698461f51a86805f771d
+      ref: 39f99c9bc50059865c177b4c7948cc155f155695
       type: https
       path: "/src/puppet/modules"
     simp-openscap:
-      ref: bd82f5f1a84745ea1b98407cb53f7e2cafe13dfc
+      ref: 9c26e36c57a9ad0451bb0a94440e0cfd62e77179
       type: https
       path: "/src/puppet/modules"
     simp-pam:
-      ref: 020dbdee9ebdf17e0303e5f8b11a0d4a1c814a87
+      ref: 05c5312a624b602e9281504ddb51e349c24e40f9
       type: https
       path: "/src/puppet/modules"
     simp-pki:
@@ -294,7 +294,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-pupmod:
-      ref: 88790fe1c4ab49392eb59c2e7a8f9f343aa66aaa
+      ref: e35bada1c874b2ba1d548494c5b4adcb7de5a2f1
       type: https
       path: "/src/puppet/modules"
     simp-puppetdb:
@@ -314,7 +314,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-simp:
-      ref: e5cb0fae497e4fb84528796a7031f84afd59d85a
+      ref: 4b5aa9c40bf7f5636a003ef57825905d31bbf133
       type: https
       path: "/src/puppet/modules"
     simp-simpcat:
@@ -326,11 +326,11 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-simp_elasticsearch:
-      ref: 5acdadfc21f06ec109c4a4a23c2945415a180ad6
+      ref: 5d09a3ace93c3daa97e02ab0863ccf554150fd02
       type: https
       path: "/src/puppet/modules"
     simp-simp_grafana:
-      ref: 7c31ca566f03b438084adc693ab5c0d3f5f36e4b
+      ref: ccb1f64dc344e6e01609b329a1452bcada6b599b
       type: https
       path: "/src/puppet/modules"
     simp-simp_logstash:
@@ -346,27 +346,27 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-simp_rsyslog:
-      ref: bac200cbef242f08dfc3a570680667d2812e65c0
+      ref: 058a9a416a25774840366e555399ed4da2a903ea
       type: https
       path: "/src/puppet/modules"
     simp-simplib:
-      ref: 7a1122b00866c3123f3b14b4fc0273972e5692c5
+      ref: b3b30b4d858612210095c8d562597ac47463a6c8
       type: https
       path: "/src/puppet/modules"
     simp-site:
-      ref: 6d0f0d65f5fbf2af281382f174282c98bca4c075
+      ref: 61327ae260572365cab6f778cd78f7769aa0d16e
       type: https
       path: "/src/puppet/modules"
     simp-ssh:
-      ref: c4ad9f5f9209598a27ded66f4e72bec2f2466aad
+      ref: 77643946f5dfe7ff084460001dbe87e77e90f687
       type: https
       path: "/src/puppet/modules"
     simp-sssd:
-      ref: 428624f9996c790e81641ede453a27ef7b5ff285
+      ref: ad908c04429d5f3f9c7e94fa77f18239f024db28
       type: https
       path: "/src/puppet/modules"
     simp-stunnel:
-      ref: 87f9d4fa80d1f437bc9c597ca4d0634a5f37e6a8
+      ref: 5ae55eb3c41e038ecde0a7166b85a5e19018f344
       type: https
       path: "/src/puppet/modules"
     simp-sudo:
@@ -378,7 +378,7 @@ releases:
       type: https
       path: "/src/puppet/modules"
     simp-svckill:
-      ref: a4c027eeb4cc8091c0771c9c29eb8e099acc75d8
+      ref: 51e4a5be8338d30d9446da228d77370960508a4a
       type: https
       path: "/src/puppet/modules"
     simp-swap:

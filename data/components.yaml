@@ -524,8 +524,8 @@ components:
     type: git
     authoritative: true
     primary_source:
-      host: 
-      path: 
+      host: github.com
+      path: simp/pupmod-simp-issue
     mirrors:
       gitlab:
         host: gitlab.com

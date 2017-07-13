@@ -1,6 +1,6 @@
 ---
 releases:
-  master:
+  6.0.0-0:
     simp-doc:
       ref: 79c18f732f6c73b8bff21809c639771a892722f2
       type: https
@@ -22,11 +22,11 @@ releases:
       type: https
       path: "/src/puppet/modules"
     elastic-elasticsearch:
-      ref: 
+      ref: dc6d3fab6ace62701aa3de6e4bb868e24fef0553
       type: https
       path: "/src/puppet/modules"
     elastic-logstash:
-      ref: 
+      ref: f475deaeb6120abc4c56c27cd3ab1ce808391517
       type: https
       path: "/src/puppet/modules"
     electrical-file_concat:

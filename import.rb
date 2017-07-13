@@ -1,5 +1,5 @@
 # vim: set expandtab ts=2 sw=2:
-require 'simp/metadata'
+require_relative 'lib/simp/metadata'
 require 'yaml'
 require 'pry'
 require 'pry-byebug'
@@ -93,7 +93,7 @@ Dir.chdir("scratch/upstream") do
               nkey = key + opt
               ret["mirrors"] = { "gitlab" => { "host" => "gitlab.com", "path" => "simp/" + nkey}}
               if (components.key?(nkey))
-                if components[nkey]["type"] != ret["type"] && components[nkey]["primary_source"] != ret["primary_source"] 
+                if components[nkey]["type"] != ret["type"] && components[nkey]["primary_source"] != ret["primary_source"]
                   next
                 else
                   release[nkey] = object

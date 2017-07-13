@@ -1,10 +1,11 @@
 # vim: set expandtab ts=2 sw=2:
-require 'simp/metadata'
+require_relative 'lib/simp/metadata'
 require 'optparse'
 require 'ostruct'
 require 'pp'
 require 'pry'
 require 'json'
+require 'yaml'
 
 command, *args = ARGV;
 metadata = Simp::Metadata::Engine.new("data")
@@ -35,9 +36,9 @@ def rest_request(request, method = "GET", body = nil)
   JSON.parse(response.body)
 end
 
-config = YAML.load_file("config.yaml")
-gitlabtoken = config["gitlab"]["token"]
-result = rest_request("https://gitlab.com/api/v3/runners?private_token=#{gitlabtoken}")
+# config = YAML.load_file("config.yaml")
+# gitlabtoken = config["gitlab"]["token"]
+# result = rest_request("https://gitlab.com/api/v3/runners?private_token=#{gitlabtoken}")
 
 case command
 when "generate"
@@ -97,11 +98,50 @@ when "mirror"
     Dir.mkdir(options.destination)
   rescue
   end
-  Dir.chdir(options.destination) do 
+  Dir.chdir(options.destination) do
     components = metadata.component_list()
     components.each do |component|
       url = metadata.url(component)
       `git clone #{url} #{component}`
     end
   end
+when "fixtures"
+  options = OpenStruct.new
+  options.release = "master"
+  options.module = "simp"
+  opt_parser = OptionParser.new do |opts|
+    opts.banner = "Usage: main.rb fixtures [options]"
+    opts.separator ""
+    opts.separator "Specific options:"
+    opts.on("-r", "--release", "Specify release (6.0.0-0, master, upstream-master)") do |p|
+      options.release = p
+    end
+    opts.on("-m", "--module", "Specify module name") do |p|
+      options.module = p
+    end
+  end
+  opt_parser.parse!(args)
+
+  fixture_repos = {}
+  metadata.list_components_with_data(options.release)["/src/puppet/modules"].each do |mod, data|
+    source = data["source"]["primary_source"]
+    fixture_repos[mod.split('-')[1]] = {
+      "repo" => "#{data['type']}://#{source['host']}/#{source['path']}",
+      "branch" => "master"
+    }
+
+    # binding.pry.byebug
+  end
+
+  fixtures_yml = {
+    "fixtures" => {
+      "repositories" => fixture_repos,
+      "symlinks" => {
+        options.module => '#{source_dir}'
+      }
+    }
+  }
+  File.write('scratch/.fixtures.yml', fixtures_yml.to_yaml)
+
+  # pry
 end
