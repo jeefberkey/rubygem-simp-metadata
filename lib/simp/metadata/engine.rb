@@ -22,6 +22,13 @@ module Simp
           end
         end
       end
+      def each(version = nil, &block)
+	      if (version == nil)
+		      component_list.each do |component|
+			      yield component
+		      end
+	      end
+      end
       def deep_merge(target_hash, source_hash)
         source_hash.each do |key, value|
           if (target_hash.key?(key))
