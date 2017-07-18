@@ -5,10 +5,12 @@ require 'pry'
 require 'pry-byebug'
 $UPSTREAMREPO="https://github.com/simp/simp-core.git"
 $DATAREPO="git@github.com:simp/simp-metadata.git"
+
 begin
   Dir.mkdir("scratch")
 rescue
 end
+
 Dir.chdir("scratch") do
   unless Dir.exists?("upstream")
     `git clone #{$UPSTREAMREPO} upstream`
@@ -21,7 +23,7 @@ Dir.chdir("scratch") do
     `git clone #{$DATAREPO} data`
   else
     Dir.chdir("data") do
-      `git fetch origin`
+      `git pull origin`
     end
   end
   begin
@@ -30,6 +32,17 @@ Dir.chdir("scratch") do
   rescue
   end
 end
+
+repo = ENV.fetch('EXTRAREPO', nil)
+if (repo == nil)
+  repos = [ $DATAREPO ]
+else
+  repos = [ $DATAREPO, repo ]
+end
+
+metadata = Simp::Metadata::Engine.new("scratch/data", repos)
+#binding.pry
+
 data = {}
 data['components'] = {}
 data['releases'] = {}
@@ -134,6 +147,6 @@ data['releases'].each do |key, value|
 end
 Dir.chdir("scratch/data") do
   `git add -A`
-  `git commit`
-  `git push origin`
+  `git commit -m "Auto Update by rubygem-simp-metadata"`
+#  `git push origin`
 end
