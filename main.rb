@@ -97,7 +97,7 @@ when "mirror"
     Dir.mkdir(options.destination)
   rescue
   end
-  Dir.chdir(options.destination) do 
+  Dir.chdir(options.destination) do
     components = metadata.component_list()
     components.each do |component|
       url = metadata.url(component)
