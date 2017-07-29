@@ -2,6 +2,6 @@
 require_relative 'metadata/engine'
 
 module Simp
-module Metadata
-end
+  module Metadata
+  end
 end

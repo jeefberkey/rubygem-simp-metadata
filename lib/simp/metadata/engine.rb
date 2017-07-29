@@ -2,6 +2,7 @@
 module Simp
 	module Metadata
 		class Engine
+
 			def initialize(cachepath = nil, metadatarepos = [ 'https://github.com/simp/simp-metadata'])
 				if (cachepath == nil)
 					@path = Dir.mktmpdir("simp-metadata")
@@ -17,7 +18,7 @@ module Simp
 						metadata_spec['basename'] = basename
 						data = {}
 						unless (Dir.exists?(@path + "/" + basename))
-							`git clone #{repo} #{basename}`	
+							`git clone #{repo} #{basename}`
 						end
 						Dir.chdir(basename) do
 							Dir.glob("**/*.yaml") do |filename|
@@ -35,7 +36,7 @@ module Simp
 
 
 					unless (Dir.exists?(@path + "/data"))
-						`git clone https://github.com/simp/simp-metadata data`	
+						`git clone https://github.com/simp/simp-metadata data`
 					end
 					Dir.chdir("data") do
 						Dir.glob("**/*.yaml") do |filename|
@@ -47,9 +48,11 @@ module Simp
 					end
 				end
 			end
+
 			def world()
 				@world
 			end
+
 			def each(version = nil, &block)
 				if (version == nil)
 					component_list.each do |component|
@@ -57,6 +60,7 @@ module Simp
 					end
 				end
 			end
+
 			def deep_merge(target_hash, source_hash)
 				source_hash.each do |key, value|
 					if (target_hash.key?(key))
@@ -71,11 +75,13 @@ module Simp
 				end
 				target_hash
 			end
+
 			def url(component)
 				record = @data['components'][component]
 				primary = record["primary_source"]
 				url = "https://#{primary["host"]}/#{primary["path"]}"
 			end
+
 			def component_list(version = nil)
 				list = []
 				@data['components'].each do |key, value|
@@ -83,6 +89,7 @@ module Simp
 				end
 				list
 			end
+
 			def list_components_with_data(version = nil)
 				if (version == nil)
 					raise "Must specify version"
@@ -100,11 +107,21 @@ module Simp
 				end
 				return retval
 			end
+
 			def component_info(component, version = nil)
+				if (version == nil)
+					raise "Must specify version"
+				end
+				list = self.component_list(version)
 				retval = nil
+				if component.split('-').length == 1
+					match = list.select { |k,v| k.split('-')[1] == component }[0]
+				else
+					match = component
+				end
 				if @data["releases"].key?(version)
-					if @data["releases"][version].key?(component)
-						retval = @data["releases"][version][component].merge({ "source" => @data["components"][component]})
+					if @data["releases"][version].key?(match)
+						retval = @data["releases"][version][match].merge({ "source" => @data["components"][match]})
 					end
 				end
 				return retval
@@ -112,4 +129,3 @@ module Simp
 		end
 	end
 end
-
